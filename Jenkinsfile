@@ -6,23 +6,31 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 checkout scm
             }
         }
 
+        stage('Check Workspace') {
+            steps {
+                bat 'cd'
+                bat 'dir'
+                bat 'dir app'
+            }
+        }
+
         stage('Verify Docker') {
             steps {
-                sh 'docker --version'
-                sh 'docker compose version'
+                bat 'docker --version'
+                bat 'docker compose version'
             }
         }
 
         stage('Install Dependencies') {
             steps {
                 dir('app') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }
         }
@@ -30,21 +38,21 @@ pipeline {
         stage('Run Tests') {
             steps {
                 dir('app') {
-                    sh 'npm test'
+                    bat 'npm test'
                 }
             }
         }
 
         stage('Build and Deploy') {
             steps {
-                sh 'docker compose up -d --build ${APP_NAME}'
+                bat 'docker compose up -d --build url-shortener-app'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline completed successfully. Application deployed.'
+            echo 'Pipeline completed successfully.'
         }
         failure {
             echo 'Pipeline failed.'
