@@ -1,0 +1,22 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "Simple URL shortener with Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node -e \"console.log('No tests yet - build passed')\""
+  },
+  "keywords": [
+    "url-shortener",
+    "express",
+    "docker",
+    "jenkins"
+  ],
+  "author": "Smruti",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

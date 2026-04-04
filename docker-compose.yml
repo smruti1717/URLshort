@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  url-shortener-app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: url-shortener-app
+    ports:
+      - "3002:3000"
+    restart: unless-stopped
+
+  jenkins-ci:
+    build:
+      context: .
+      dockerfile: docker/jenkins.Dockerfile
+    container_name: jenkins-ci
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/workspace
+    working_dir: /workspace
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
