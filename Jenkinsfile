@@ -43,14 +43,15 @@ pipeline {
             }
         }
 
-       stage('Build and Deploy') {
-    when {
-        branch 'main'
+        stage('Build and Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                bat 'docker compose up -d --build url-shortener-app'
+            }
+        }
     }
-    steps {
-        bat 'docker compose up -d --build url-shortener-app'
-    }
-}
 
     post {
         success {
