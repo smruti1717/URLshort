@@ -33,28 +33,54 @@ app.get("/", (req, res) => {
       <head>
         <title>URL Shortener</title>
         <style>
-          body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 50px auto;
-            padding: 20px;
-          }
-          input, button {
-            padding: 10px;
-            margin: 8px 0;
-            width: 100%;
-            font-size: 16px;
-          }
-          .box {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-          }
-          a {
-            color: blue;
-            word-break: break-all;
-          }
-        </style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #4facfe;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #007bff;
+  }
+</style>
       </head>
       <body>
         <div class="box">
